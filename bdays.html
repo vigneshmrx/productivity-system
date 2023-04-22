@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthdays</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Source+Code+Pro:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            --blue: #3c486b;
+            --cream: #f0f0f0;
+            --yellow: #f9d949;
+            --orange: #f45050;
+        }
+
+        body {
+            background-color: var(--cream);
+            overflow: auto;
+        }
+
+        #pop-up-box {
+            position: fixed;
+            width: 80%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            visibility: hidden;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        #pop-up-header {
+            background: var(--blue);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--yellow);
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+
+        .cut-icon-one,
+        .cut-icon-two {
+            width: 25px;
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--yellow);
+        }
+
+        .cut-icon-one {
+            margin-bottom: 11px;
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .cut-icon-two {
+            margin-top: 11px;
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .pop-up-message {
+            padding: 10px;
+            background: var(--orange);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .bday-heading {
+            width: 80%;
+            background-color: var(--orange);
+            margin: 20px auto;
+            text-align: center;
+            padding: 10px;
+            border-radius: 15px;
+            z-index: 1;
+            box-shadow: 7px 7px var(--blue)
+        }
+
+        .box {
+            width: 65%;
+            margin: 38px auto;
+            text-align: center;
+            /* border: 5px solid var(--blue); */
+            font-weight: bold;
+            padding: 20px;
+            background: var(--orange);
+            /* color: var(--orange); */
+            letter-spacing: 1.5px;
+            transform: translateX(-700px);
+            font-size: 18px;
+            box-shadow: 7px 7px var(--blue)
+        }
+
+        @keyframes box-animation {
+            50% {
+                transform: translateX(-700px);
+            } 
+            100% {
+                transform: translateX(0px);
+            }
+        }
+
+        @keyframes box-animation2 {
+            50% {
+                transform: translateX(700px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .box {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body onload="beginningFunction();">
+    <header>
+        <nav>
+            <div class="name">Vignesh Sundrani</div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+        <div class="theMenu">
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="bdays.html">Bdays</a></li>
+                <li><a href="arth.html">Meanings</a></li>
+                <li><a href="pwd-generator.html">Password Generator</a></li>
+                <li><a href="to-do-list.html">To do List</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="pop-up-box">
+        <div id="pop-up-header">
+            <div class="pop-up-heading">Birthday Alert</div>
+            <div class="cut-icon">
+                <div class="cut-icon-one"></div>
+                <!-- <div class="cut-icon-mid"></div> -->
+                <div class="cut-icon-two"></div>
+            </div>
+        </div>
+        <div class="pop-up-message"></div>
+    </div>
+    <div class="bday-heading">Birthdays</div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <footer>
+        <div class="copyright-text"></div>
+    </footer>
+    <script>
+        let nameArray = ["Trisha | January 08", "Vaishnavi Shetty | January 08",
+                            "Divya | January 16", "Rajal | January 25", "Snehal | January 27",
+                            "Aiswarya (SIMS) | March 10", "Abhiram | April 11", "Brino | April 19",
+                            "Rachana | April 22", "Kumar | April 23", "Shravya | May 11", "Neha Murali | May 24", "SreeRaksha | June 12", 
+                            "Aysha | June 14", "Darshan | June 16", "Vaishnavi (Goa) | June 20", "Ziya | July 01",
+                            "Anjitha | July 14", "Vismaya | July 31", "Pratham | August 01", "Akash Our Boy | September 12",
+                            "Aaron | September 19", "Nivedh | October 03", "Vijith | November 03",
+                            "Nandana R | November 05", "Vinti | November 27", "Janani Miss | December 08",
+                            "Rohit | December 21"];
+
+        let monthObj = {"January": "01", "February": "02", "March": "03", "April": "04", "May": "05",
+                        "June": "06", "July": "07", "August": "08", "September": "09", "October": "10", "November": "11", "December": "12"};
+
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        
+        const beginningFunction = () => {
+            let boxes = document.getElementsByClassName("box");
+            boxes = Array.from(boxes);
+
+            let todayBday = [];
+
+            for (let i in boxes) {
+                boxes[i].innerHTML = nameArray[i];
+
+                let details = nameArray[i].split(" ");
+
+                if ((monthObj[details[details.length - 2]] === mm) && (details[details.length - 1] === dd)) {
+                    todayBday.push(details[0]);
+                }
+                boxes[i].style.animation = "box-animation 2s ease-in-out 1 " + i*250 + "ms forwards";
+            }
+
+            if (todayBday.length != 0) {
+                showPopUpBox(todayBday);
+            }
+            
+        }
+
+        let popUpBox = document.getElementById("pop-up-box");
+        const showPopUpBox = (theArray) => {
+            let text = "";
+            let popUpMessage = document.getElementsByClassName("pop-up-message")[0];
+            theArray.forEach((ele) => {
+                text = text + ele + "\n";
+            });
+            popUpMessage.innerHTML = "The people with birthday today is: " + text;
+            setTimeout(() => {
+                popUpBox.style.visibility = "visible";
+            }, 3000);
+            // alert("The people who have birthday today:\n" + text);
+        }
+
+        let popUpCloseIcon = document.getElementsByClassName("cut-icon")[0];
+        popUpCloseIcon.addEventListener("click", () => {
+            popUpBox.style.visibility = "hidden";
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
