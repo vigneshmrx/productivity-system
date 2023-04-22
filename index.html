@@ -8,100 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Source+Code+Pro:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            font-family: 'Source Code Pro', monospace;
-            --blue: #3c486b;
-            --cream: #f0f0f0;
-            --yellow: #f9d949;
-            --orange: #f45050;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        nav {
-            background: var(--blue);
-            height: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .name { 
-            margin-left: 15px;
-            color: var(--yellow);
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .hamburger {
-            cursor: pointer;
-        }
-
-        .bar {
-            width: 27px;
-            height: 3px;
-            margin: 5px 15px;
-            background: var(--yellow);
-            border-radius: 5px;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .bar:nth-child(1).show {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .bar:nth-child(2).show {
-            opacity: 0;
-        }
-
-        .bar:nth-child(3).show {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        .theMenu {
-            background: var(--blue);
-            text-align: center;
-            padding: 10px;
-            transform: translateX(1000px);
-            transition: all 0.5s ease-in-out;
-        }
-
-        .theMenu.show {
-            transform: translateX(0px);
-        }
-
-        ul {
-            padding: 0;
-            margin: 0;
-        }
-
-        li {
-            list-style: none;
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--yellow);
-            font-family: 'Source Code Pro', monospace;
-            letter-spacing: 2px;
-            font-size: 20px;
-        }
-
-        footer {
-            height: 50px;
-            background: var(--blue);
-            color: var(--yellow);
-            text-align: center;
-            display: grid;
-            place-items: center;
-        }
     </style>
 </head>
 <body>
@@ -116,37 +24,26 @@
         </nav>
         <div class="theMenu">
             <ul>
-                <li><a href="#">Books</a></li>
-                <li><a href="#">Meanings</a></li>
-                <li><a href="#">Bdays</a></li>
-                <li><a href="#">To do List</a></li>
-                <li><a href="#">Password Generator</a></li>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li><a href="books.html">Books</a></li>
+                <li><a href="bdays.html">Bdays</a></li>
+                <li><a href="arth.html">Meanings</a></li>
+                <li><a href="pwd-generator.html">Password Generator</a></li>
+                <li><a href="to-do-list.html">To do List</a></li>
             </ul>
         </div>
     </header>
+    
     <section>
 
     </section>
+    
     <footer>
         <div class="copyright-text"></div>
     </footer>
 
-    <script>
-        let hamburger = document.getElementsByClassName("hamburger")[0];
-        let theBars = Array.from(document.getElementsByClassName("bar"));
-        let menu = document.getElementsByClassName("theMenu")[0];
-        hamburger.addEventListener("click", () => {
-            theBars.forEach(bar => {
-                bar.classList.toggle("show");
-                menu.classList.toggle("show");
-            })
-        });
-
-        let footerText = document.getElementsByClassName("copyright-text")[0];
-        let dat = new Date();
-        let curYear = dat.getFullYear();
-
-        footerText.innerHTML = "Copyright &#169; " + curYear + ", Vignesh Sundrani. All Rights Reserved.";
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
