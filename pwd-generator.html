@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pwd Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Source+Code+Pro:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            font-family: 'Source Code Pro', monospace;
+            /* --blue: #7149c6;
+            --red: #fc2947;
+            --black: #111;
+            --orange: #fe6244;
+            --peach: #ffdeb9;
+            --color-bg: #fff;
+            --color-blue: #3897d3;
+            --color-default: #333;
+            --color-yellow: #eef13b; */
+            --blue: #3c486b;
+            --cream: #f0f0f0;
+            --yellow: #f9d949;
+            --orange: #f45050;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            height: 90vh;
+        }
+
+        .container {
+            width: 90%;
+            height: 90vh;
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        fieldset {
+            width: 100%;
+            /* height: 100%; */
+            display: grid;
+            place-items: center;
+            border: 3px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            overflow: auto;
+            text-align: center;
+        }
+
+        legend {
+            text-align: left;
+            border: 2px solid black;
+            padding: 7px 17px;
+            border-radius: 5px;
+            box-shadow: 5px 5px var(--blue);
+        }
+
+        input[type=text] {
+            width: 250px;
+            height: 25px;
+            padding: 3px 5px;
+            margin: 50px 0px;
+            text-align: center;
+            border: 3px solid black;
+            font-size: 15px;
+        }
+
+        input[type=text]:hover {
+            box-shadow: 5px 5px var(--blue);
+        }
+
+        input[type=button] {
+            padding: 7px 17px;
+            background: var(--blue);
+            border: 2px solid black;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: var(--yellow);
+            /* font-weight: bold; */
+            letter-spacing: 2px;
+        }
+
+        @keyframes shake {
+            25% {
+                transform: translateX(6px);
+            } 
+            50% {
+                transform: translateX(-6px);
+            } 
+            75% {
+                transform: translateX(6px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .buttons {
+                text-align: center;
+            }
+
+            input[type=button] {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="name">Vignesh Sundrani</div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+        <div class="theMenu">
+            <ul class="links">
+                <li>
+                    <a href="index.html" style="color: var(--yellow);">Home</a>
+                </li>
+                <li><a href="books.html" style="color: var(--yellow);">Books</a></li>
+                <li><a href="bdays.html" style="color: var(--yellow);">Bdays</a></li>
+                <li><a href="arth.html" style="color: var(--yellow);">Meanings</a></li>
+                <li><a href="pwd-generator.html" style="color: var(--yellow);">Password Generator</a></li>
+                <li><a href="to-do-list.html" style="color: var(--yellow);">To do List</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="container">
+        <fieldset>
+            <legend>Password Generator</legend>
+            <!-- <div class="input-area"> -->
+                <input type="text" id="inputBox">
+                <div class="buttons">
+                    <input type="button" value="Generate Normal Pwd" onclick="emptyOrNot('1');">
+                    <input type="button" value="Generate Hex Pwd" onclick="emptyOrNot('2');">
+                    <input type="button" value="Clear" onclick="clearInputBox();">
+                </div>
+                <p id="pWD"></p>
+            <!-- </div> -->
+        </fieldset>
+    </div>
+
+    <footer>
+        <div class="copyright-text"></div>
+    </footer>
+
+    <script>
+        const emptyOrNot = (btnNo) => {
+            let str = document.getElementById("inputBox").value.toLowerCase();
+            let para = document.getElementById("pWD");
+            let pwd = "";
+
+            if (str == null || str == "") {
+                document.getElementById("inputBox").style.animation = "shake 300ms";
+            } else {
+                if (btnNo == 1) {
+                    generateIt("normal", str, para, pwd)
+                } else {
+                    generateIt("hex", str, para, pwd);
+                }
+            }
+        }
+
+        const generateIt = (type, theString, thePara, thePWD) => {
+            let normalObj = {"a":2, "b": 2, "c": 2, "d": 3, "e": 3, "f": 3, "g": 4, "h": 4, "i": 4, 
+                        "j": 5, "k": 5, "l": 5, "m": 6, "n": 6, "o": 6, "p": 7, "q": 7, "r": 7, "s": 7, 
+                        "t": 8, "u": 8, "v": 8, "w": 9, "x": 9, "y": 9, "z": 9}
+
+            let hexObj = {"2": "0010", "3": "0011", "4": "0100", "5": "0101", "6": "0110", 
+                        "7": "0111", "8": "1000", "9": "1001"};
+
+            if (type == "normal") {
+                for (let i = 0; i < theString.length; i++) {
+                    thePWD += normalObj[theString[i]];
+                }
+            } else {
+                for (let i = 0; i < theString.length; i++) {
+                    thePWD += hexObj[normalObj[theString[i]]];
+                }
+            }
+            
+            thePara.innerHTML = "Password: " + "<b>" + thePWD + "</b>";
+        }
+
+        const clearInputBox = () => {
+            document.getElementById("inputBox").value = "";
+            document.getElementById("pWD").innerHTML = "";
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
