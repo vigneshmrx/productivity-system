@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Source+Code+Pro:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            font-family: 'Source Code Pro', monospace;
+            --blue: #3c486b;
+            --cream: #f0f0f0;
+            --yellow: #f9d949;
+            --orange: #f45050;
+
+            /* --blue: #3c486b;
+            --cream: #f0f0f0;
+            --yellow: #f9d949;
+            --orange: #f45050; */
+        }
+
+        body {
+            margin: 0px;
+            font-size: 20px;
+            background: var(--cream);
+            /* background-color: var(--blue);*/
+        } 
+
+        .title {
+            width: 150px;
+            text-align: center;
+            /* border: 1px solid black; */
+            border-radius: 7px;
+            padding: 10px 15px;
+            margin: 30px auto;
+            background: var(--yellow);
+        }
+
+        .main-container {
+            width: 100%;
+            height: 80vh;
+            display: grid;
+            place-items: center;
+            /* border: 1px solid black; */
+            /* position: relative; */
+        }
+
+        .fictional-books, 
+        .non-fictional-books {
+            width: 80%;
+            min-height: 45px;
+            max-height: 75%;
+            overflow: auto;
+            /* border: 1px solid black; */
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px black;
+        }
+
+        .fictional-books::-webkit-scrollbar, .non-fictional-books::-webkit-scrollbar {
+            display: none;
+        }
+
+        #fictional-heading,
+        #non-fictional-heading {
+            text-align: center;
+            padding: 15px 0px 10px 0px;
+            position: sticky;
+            top: 0px;
+            cursor: pointer;
+            background: var(--blue);
+            color: var(--yellow);
+        }
+
+        .fictional-content, 
+        .non-fictional-content {
+            padding: 15px 15px;
+            font-size: 16px;
+            line-height: 23px;
+            display: none;
+            background: var(--yellow);
+        }
+
+        hr {
+            height: 1px;
+            background: black;
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /* .book-name {
+            transform: translateX(300px);
+            opacity: 0;
+            transition: 150ms;
+        }
+
+        .book-name.show {
+            transform: translateX(0px);
+            opacity: 1;
+        } */
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="name">Vignesh Sundrani</div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+        <div class="theMenu">
+            <ul class="links">
+                <li>
+                    <a href="index.html" style="color: var(--yellow);">Home</a>
+                </li>
+                <li><a href="books.html" style="color: var(--yellow);">Books</a></li>
+                <li><a href="bdays.html" style="color: var(--yellow);">Bdays</a></li>
+                <li><a href="arth.html" style="color: var(--yellow);">Meanings</a></li>
+                <li><a href="pwd-generator.html" style="color: var(--yellow);">Password Generator</a></li>
+                <li><a href="to-do-list.html" style="color: var(--yellow);">To do List</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="title">서적</div>
+    <div class="main-container">
+        <div class="fictional-books">
+            <div id="fictional-heading">
+                Fictional Books
+            </div>
+            <div class="fictional-content">
+                <div class="fict-to-read"></div>
+                <br><hr><br>
+                <div class="fict-already-read"></div>
+            </div>
+        </div>
+        <div class="non-fictional-books">
+            <div id="non-fictional-heading">
+                Non Fictional Books
+            </div>
+            <div class="non-fictional-content">
+                <div class="non-fict-to-read"></div>
+                <br><hr><br>
+                <div class="non-fict-already-read"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="copyright-text"></div>
+    </footer>
+
+    <script>
+        const fictionFunction = () => {
+            let fict_books = [['The Sun is also a Star', 'Nicola Yoon'], ['Paper Towns', 'John Green'], ['The Girl in Room 105', 'Chetan Bhagat'],
+                        ['The Fault in Our Stars', 'John Green'],
+                        ['I Too Had a Love Story', 'Ravinder Singh'],
+                        ['Can Love Happen Twice?', 'Ravinder Singh'],
+                        ['The Flash: The Haunting of Barry Allen', 'Clay and Susan Griffith'],
+                        ['Love, Simon', 'Becky Albertalli'],
+                        ['The Belated Bachelor Party', 'Ravinder Singh'],
+                        ['Thirteen Reasons Why', 'Jay Asher'],
+                        ['The Diary of a Wimpy Kid: The Third Wheel', 'Jeff Kinney'],
+                        ['The Diary of a Wimpy Kid: Old School', 'Jeff Kinney'],
+                        ['Like It Happened Yesterday', 'Ravinder Singh'],
+                        ['Your Dreams are Mine Now', 'Ravinder Singh'],
+                        ['The Diary of a Wimpy Kid: The Meltdown', 'Jeff Kinney'],
+                        ['Oh Shit, Not Again', 'Mandar Kokate'],
+                        ['One night @ the call center', 'Chetan Bhagat'],
+                        ['Earth to Centauri: The First Journey', 'Kumar L'],
+                        ['The Diary of a Wimpy Kid: Double Down', 'Jeff Kinney'],
+                        ['Time Abberation', 'Rahul Sharma'],
+                        ['Harry Potter and the Philosophers Stone', 'J. K. Rowling'],
+                        ['Harry Potter and the Chamber of Secrets', 'J. K. Rowling'],
+                        ['Harry Potter and the Prisoner of Azkaban', 'J. K. Rowling'],
+                        ['Harry Potter and the Goblet of Fire', 'J. K. Rowling'],
+                        ['The Godfather', 'Mario Puzo'],
+                        ['Thirteen Reasons Why', 'Jay Asher'],
+                        ['Looking for Alaska', 'John Green'],
+                        ['Fifty Shades of Grey', 'E L James'],
+                        ['Me Before You', 'Jojo Moyes'],
+                        ['Fifty Shades Darker', 'E L James'],
+                        ['Twilight', 'Stephenie Meyer'],
+                        ['Fifty Shades Freed', 'E L James'],
+                        ['The Great Alone', 'Kristin Hannah'],
+                        ['Ikigai: The Japanese Secret to a Long and Happy Life', 'Hector Garcia and Francesc Miralles'],
+                        ['Divergent', 'Veronica Roth'],
+                        ['The Wimpy Kid Movie Diary', 'Jeff Kinney'],
+                        ['Everything, Everything', 'Nicola Yoon'],
+                        ['Dark Matter', 'Blake Crouch'],
+                        ['The Alchemist', 'Paulo Coelho'],
+                        ['It Ends With Us', 'Colleen Hoover'],
+                        ['Harry Potter and the Order of the Phoenix', 'J. K. Rowling'],
+                        ['It Starts With Us', 'Colleen Hoover'],
+                        ['One Indian Girl', 'Chetan Bhagat']];
+            
+            let fict_to_read = [['Apollo 8: The Thrilling Story of the First Mission to the Moon', 'Jeffrey Kluger'], 
+                                ['Apollo 11: The Inside Story', 'David Whitehouse'], 
+                                ['Lost Moon: The Perilous Voyage of Apollo 13', 'Jeffrey Kluger and Jim Lovell'], 
+                                ['The Apollo Murders', 'Chris Hadfield'], ['Recursion', 'Blake Crouch']];
+            let alreadReadFict = document.getElementsByClassName("fict-already-read")[0];
+            alreadReadFict.innerHTML = "<center><u><i>Already Read</i></u>:</center><br>";
+            fict_books.forEach((book) => {
+                alreadReadFict.innerHTML += `<li type="1" class="book-name">${book[0]} - <b>${book[1]}</b></li>`;
+            });
+
+            let toReadFict = document.getElementsByClassName("fict-to-read")[0];
+            toReadFict.innerHTML = "<center><u><i>To read</i></u>:</center><br>";
+            fict_to_read.forEach((book) => {
+                toReadFict.innerHTML += `<li type="1" class="book-name">${book[0]} - <b>${book[1]}</b></li>`;
+            });
+        }
+        fictionFunction();
+
+        const nonFictionalFunction = () => {
+        let non_fict_books = [['One Direction: Where We Are Tour', 'One Direction'],
+                            ['Zayn', 'Zayn'], ['An Unsuitable Boy', 'Karan Johar'], 
+                            ['The Visionaries Who Changed The World', 'George Ilian'], 
+                            ['Mindset', 'Dr Carol S. Dweck'], 
+                            ['Steve Jobs: The man who thought different', 'Karen Blumenlthal'],
+                            ['The Monk Who Sold His Ferrari', 'Robin Sharma'],
+                            ['Think Like A Monk', 'Jay Shetty'], 
+                            ['<a href="https://ringed-meter-575.notion.site/The-5-AM-Club-e93d29607df34a16bfe39f39a8378ecc" target="_blank">The 5 AM Club', 'Robin Sharma</a>']];
+        
+        let to_read_non_fict = [['What We Owe The Future', 'William MacAskill'],
+                                ['Doglapan: The Hard Truth about Life and Start-Ups', 'Ashneer Grover'], ['Elon Musk: How the Billionaire CEO of SpaceX and Tesla is Shaping our Future', 'Ashlee Vance']];
+        
+        let alreadReadNonFict = document.getElementsByClassName("non-fict-already-read")[0];
+        alreadReadNonFict.innerHTML = "<center><u><i>Already Read</i></u>:</center><br>";
+        non_fict_books.forEach((book) => {
+            alreadReadNonFict.innerHTML += `<li type="1" class="book-name">${book[0]} - <b>${book[1]}</b></li>`;
+        });
+
+
+        let toReadNonFict = document.getElementsByClassName("non-fict-to-read")[0];
+        toReadNonFict.innerHTML = "<center><u><i>To Read</i></u>:</center><br>";
+        to_read_non_fict.forEach((book) => {
+            toReadNonFict.innerHTML += `<li type="1" class="book-name">${book[0]} - <b>${book[1]}</b></li>`;
+        });
+    }
+        nonFictionalFunction();
+
+        let fictional_book_bar = document.getElementById("fictional-heading");
+        fictionalContentVisibility = false;
+
+        fictional_book_bar.addEventListener("click", () => {
+            fictionalContent = document.getElementsByClassName("fictional-content")[0];
+
+            if (fictionalContentVisibility == false) {
+                fictionalContent.style.display = "block";
+                fictionalContentVisibility = true;
+            } else {
+                fictionalContent.style.display = "none";
+                fictionalContentVisibility = false;
+            }
+        });
+
+
+        let non_fictional_book_bar = document.getElementById("non-fictional-heading");
+        nonFictionalContentVisibility = false;
+
+        non_fictional_book_bar.addEventListener("click", () => {
+            nonFictionalContent = document.getElementsByClassName("non-fictional-content")[0];
+
+            if (nonFictionalContentVisibility == false) {
+                nonFictionalContent.style.display = "block";
+                nonFictionalContentVisibility = true;
+            } else {
+                nonFictionalContent.style.display = "none";
+                nonFictionalContentVisibility = false;
+            }
+        });
+
+        // const books = document.querySelectorAll(".book-name");
+        // const observer = new IntersectionObserver(entries => {
+        //     entries.forEach(entry => {
+        //         entry.target.classList.toggle("show", entry.isIntersecting);
+        //     });
+        // }, {
+        //     threshold: 0.5
+        // });
+
+        // books.forEach(book => {
+        //     observer.observe(book);
+        // });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
